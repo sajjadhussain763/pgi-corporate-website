@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="PGI (Paragon Group) - A proven leader in educational services including Internships and Professional Training.">
+    <title>PGI - Paragon Group | Internships & Professional Training</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a2b4c',
+                        accent: '#ffb347',
+                        light: '#f5f7fa',
+                        dark: '#333333'
+                    },
+                    fontFamily: {
+                        heading: ['Montserrat', 'sans-serif'],
+                        body: ['Open Sans', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'hero-pattern': "url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop')",
+                        'stats-pattern': "url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop')"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS Styles -->
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #333333;
+            background-color: #f5f7fa;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Smooth View Transitions */
+        .page-view {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .page-view.active {
+            display: block;
+            opacity: 1;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Nav Link Hover & Active State */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 4px;
+            right: 0;
+            background: #ffb347;
+            transition: width 0.3s ease;
+            -webkit-transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+            left: 0;
+            background: #ffb347;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #ffb347;
+        }
+
+        /* Carousel Customizations */
+        .carousel-item {
+            display: none;
+        }
+
+        .carousel-item.active {
+            display: block;
+            animation: fadeInCarousel 0.8s ease-out;
+        }
+
+        @keyframes fadeInCarousel {
+            from {
+                opacity: 0;
+                transform: scale(1.02);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Buttons & Cards */
+        .btn-primary {
+            background-color: #1a2b4c;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #ffb347;
+            color: #1a2b4c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-accent {
+            background-color: #ffb347;
+            color: #1a2b4c;
+            transition: all 0.3s ease;
+        }
+
+        .btn-accent:hover {
+            background-color: #1a2b4c;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            border-color: #ffb347;
+        }
+
+        /* Glassmorphism helpers */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-dark {
+            background: rgba(26, 43, 76, 0.85);
+            backdrop-filter: blur(8px);
+        }
+
+        /* Image Overlays */
+        .img-overlay {
+            background: linear-gradient(to top, rgba(26, 43, 76, 0.9) 0%, rgba(26, 43, 76, 0.3) 100%);
+        }
+
+        /* Back to top */
+        #back-to-top {
+            transition: opacity 0.3s, transform 0.3s;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+        }
+
+        #back-to-top.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- Navigation Bar -->
+    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 cursor-pointer" onclick="navigateTo('home')">
+                    <div class="flex items-center gap-2 group">
+                        <div
+                            class="h-10 w-10 bg-primary text-white rounded flex items-center justify-center font-heading font-bold text-xl group-hover:bg-accent group-hover:text-primary transition-colors">
+                            PG
+                        </div>
+                        <span class="font-heading font-bold text-2xl tracking-tight text-primary">Paragon Group</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-6 lg:space-x-8">
+                    <a href="#" onclick="navigateTo('home'); return false;"
+                        class="nav-link active text-primary font-medium text-sm lg:text-base py-2"
+                        data-target="home">Home</a>
+                    <a href="#internships"
+                        onclick="navigateTo('home'); setTimeout(()=>document.getElementById('internships').scrollIntoView(), 100); return false;"
+                        class="nav-link text-primary font-medium text-sm lg:text-base py-2">Internships</a>
+                    <a href="#" onclick="navigateTo('pg-training'); return false;"
+                        class="nav-link text-primary font-medium text-sm lg:text-base py-2" data-target="pg-training">PG
+                        Training</a>
+                    <a href="#" onclick="navigateTo('business-internship'); return false;"
+                        class="nav-link text-primary font-medium text-sm lg:text-base py-2"
+                        data-target="business-internship">Business Internship</a>
+                    <a href="#offers"
+                        onclick="navigateTo('business-internship'); setTimeout(()=>document.getElementById('offers').scrollIntoView(), 100); return false;"
+                        class="nav-link text-primary font-medium text-sm lg:text-base py-2">Offers</a>
+                    <a href="#about"
+                        onclick="navigateTo('home'); setTimeout(()=>document.getElementById('about').scrollIntoView(), 100); return false;"
+                        class="nav-link text-primary font-medium text-sm lg:text-base py-2">About</a>
+                    <a href="#contact" onclick="document.getElementById('footer').scrollIntoView(); return false;"
+                        class="nav-link text-primary font-medium text-sm lg:text-base py-2">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-primary hover:text-accent focus:outline-none p-2"
+                        aria-label="Menu">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-white/95 backdrop-blur-md shadow-lg border-t border-gray-100 absolute w-full left-0">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#" onclick="navigateTo('home'); toggleMobileMenu(false); return false;"
+                    class="block px-3 py-3 rounded-md text-base font-medium text-primary hover:bg-light hover:text-accent">Home</a>
+                <a href="#internships"
+                    onclick="navigateTo('home'); setTimeout(()=>document.getElementById('internships').scrollIntoView(), 100); toggleMobileMenu(false); return false;"
+                    class="block px-3 py-3 rounded-md text-base font-medium text-primary hover:bg-light hover:text-accent">Internships</a>
+                <a href="#" onclick="navigateTo('pg-training'); toggleMobileMenu(false); return false;"
+                    class="block px-3 py-3 rounded-md text-base font-medium text-primary hover:bg-light hover:text-accent">PG
+                    Training</a>
+                <a href="#" onclick="navigateTo('business-internship'); toggleMobileMenu(false); return false;"
+                    class="block px-3 py-3 rounded-md text-base font-medium text-primary hover:bg-light hover:text-accent">Business
+                    Internship</a>
+                <a href="#offers"
+                    onclick="navigateTo('business-internship'); setTimeout(()=>document.getElementById('offers').scrollIntoView(), 100); toggleMobileMenu(false); return false;"
+                    class="block px-3 py-3 rounded-md text-base font-medium text-primary hover:bg-light hover:text-accent">Offers</a>
+                <a href="#about"
+                    onclick="navigateTo('home'); setTimeout(()=>document.getElementById('about').scrollIntoView(), 100); toggleMobileMenu(false); return false;"
+                    class="block px-3 py-3 rounded-md text-base font-medium text-primary hover:bg-light hover:text-accent">About</a>
+                <a href="#contact"
+                    onclick="document.getElementById('footer').scrollIntoView(); toggleMobileMenu(false); return false;"
+                    class="block px-3 py-3 rounded-md text-base font-medium text-primary hover:bg-light hover:text-accent">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="pt-20">
+
+        <!-- PAGE 1: HOME PAGE -->
+        <div id="view-home" class="page-view active">
+            <!-- Block 1: Carousel Banner -->
+            <section class="relative h-[80vh] min-h-[600px] overflow-hidden bg-primary" id="home-hero">
+                <!-- Slide 1 -->
+                <div class="carousel-item active absolute inset-0 w-full h-full transition-opacity duration-1000">
+                    <div class="absolute inset-0 bg-cover bg-center"
+                        style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop');">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/40"></div>
+                    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
+                        <span
+                            class="inline-block py-1 px-3 rounded-full bg-accent text-primary font-bold text-sm tracking-widest uppercase mb-6 self-start transform transition-transform duration-500 hover:scale-105">Business
+                            & Internships</span>
+                        <h1
+                            class="text-white text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold leading-tight mb-6 max-w-4xl tracking-tight slide-up-text">
+                            Long and Short <br><span class="text-accent">Internship</span></h1>
+                        <p
+                            class="text-gray-200 text-lg md:text-xl md:text-2xl mb-10 max-w-2xl font-light slide-up-text delay-100">
+                            Launch your global career with hands-on experience in international companies</p>
+                        <div class="flex flex-wrap gap-4 slide-up-text delay-200">
+                            <a href="#" onclick="navigateTo('business-internship'); return false;"
+                                class="btn-accent px-8 py-4 rounded font-bold text-lg inline-flex items-center group">
+                                Explore Programs <i
+                                    class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-item absolute inset-0 w-full h-full transition-opacity duration-1000">
+                    <div class="absolute inset-0 bg-cover bg-center"
+                        style="background-image: url('https://images.unsplash.com/photo-1529070538774-1843cb166530?q=80&w=2070&auto=format&fit=crop');">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/40"></div>
+                    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
+                        <span
+                            class="inline-block py-1 px-3 rounded-full bg-accent text-primary font-bold text-sm tracking-widest uppercase mb-6 self-start">Community
+                            Impact</span>
+                        <h1
+                            class="text-white text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold leading-tight mb-6 max-w-4xl tracking-tight">
+                            Social Inclusion <br>& <span class="text-accent">Education</span></h1>
+                        <p class="text-gray-200 text-lg md:text-xl md:text-2xl mb-10 max-w-2xl font-light">Make a
+                            difference while building professional skills</p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#internships"
+                                onclick="document.getElementById('internships').scrollIntoView(); return false;"
+                                class="btn-accent px-8 py-4 rounded font-bold text-lg inline-flex items-center group">
+                                Learn More <i
+                                    class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-item absolute inset-0 w-full h-full transition-opacity duration-1000">
+                    <div class="absolute inset-0 bg-cover bg-center"
+                        style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop');">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/40"></div>
+                    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
+                        <span
+                            class="inline-block py-1 px-3 rounded-full bg-accent text-primary font-bold text-sm tracking-widest uppercase mb-6 self-start">Innovation
+                            Focus</span>
+                        <h1
+                            class="text-white text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold leading-tight mb-6 max-w-4xl tracking-tight">
+                            Manufacturing <br>& <span class="text-accent">Technology</span></h1>
+                        <p class="text-gray-200 text-lg md:text-xl md:text-2xl mb-10 max-w-2xl font-light">Work with
+                            cutting-edge tech in global industries</p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#internships"
+                                onclick="document.getElementById('internships').scrollIntoView(); return false;"
+                                class="btn-accent px-8 py-4 rounded font-bold text-lg inline-flex items-center group">
+                                View Opportunities <i
+                                    class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <div class="absolute bottom-8 left-0 right-0 z-20 flex justify-center gap-3">
+                    <button class="w-3 h-3 rounded-full bg-accent focus:outline-none carousel-dot active"
+                        data-slide="0"></button>
+                    <button
+                        class="w-3 h-3 rounded-full bg-white/50 hover:bg-white focus:outline-none carousel-dot transition-colors"
+                        data-slide="1"></button>
+                    <button
+                        class="w-3 h-3 rounded-full bg-white/50 hover:bg-white focus:outline-none carousel-dot transition-colors"
+                        data-slide="2"></button>
+                </div>
+            </section>
+
+            <!-- Block 2: Types of Internships -->
+            <section id="internships" class="py-24 bg-light relative overflow-hidden">
+                <!-- Decorative Elements -->
+                <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-primary/5 blur-3xl"></div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-4xl md:text-5xl font-heading font-bold text-primary mb-6">Discover Your Perfect
+                            Fit</h2>
+                        <div class="w-24 h-1 bg-accent mx-auto mb-6"></div>
+                        <p class="text-lg text-gray-600">Whether you prefer the vibrant culture of Malta, the
+                            flexibility of remote work, or a blend of both, we offer internship formats tailored to your
+                            lifestyle and career goals.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Physical -->
+                        <div class="feature-card bg-white rounded-xl overflow-hidden border border-gray-100 group">
+                            <div class="h-48 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?q=80&w=1974&auto=format&fit=crop"
+                                    alt="Malta Office"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 img-overlay"></div>
+                                <div class="absolute bottom-4 left-4 text-white">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <i class="fas fa-building text-accent text-xl"></i>
+                                        <h3 class="text-2xl font-heading font-bold">PHYSICAL</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <p class="text-gray-600 mb-6 leading-relaxed">Intern in the island of Malta where
+                                    companies thrive, startups flourish, and investors multiply. From fortune 500
+                                    companies to startups - you can work in a dynamic environment.</p>
+                                <a href="#"
+                                    class="text-primary font-bold hover:text-accent transition-colors flex items-center group/link">Explore
+                                    On-site <i
+                                        class="fas fa-arrow-right ml-2 group-hover/link:translate-x-1 transition-transform"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- Remote -->
+                        <div class="feature-card bg-white rounded-xl overflow-hidden border border-gray-100 group">
+                            <div class="h-48 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?q=80&w=2069&auto=format&fit=crop"
+                                    alt="Remote Work"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 img-overlay"></div>
+                                <div class="absolute bottom-4 left-4 text-white">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <i class="fas fa-laptop-house text-accent text-xl"></i>
+                                        <h3 class="text-2xl font-heading font-bold">REMOTE</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <p class="text-gray-600 mb-6 leading-relaxed">Intern with international companies and
+                                    gain hands-on experience in a global industry environment to kickstart your career
+                                    in your desired sector.</p>
+                                <a href="#"
+                                    class="text-primary font-bold hover:text-accent transition-colors flex items-center group/link">Explore
+                                    Remote <i
+                                        class="fas fa-arrow-right ml-2 group-hover/link:translate-x-1 transition-transform"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- Hybrid -->
+                        <div class="feature-card bg-white rounded-xl overflow-hidden border border-gray-100 group">
+                            <div class="h-48 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop"
+                                    alt="Hybrid Environment"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 img-overlay"></div>
+                                <div class="absolute bottom-4 left-4 text-white">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <i class="fas fa-sync-alt text-accent text-xl"></i>
+                                        <h3 class="text-2xl font-heading font-bold">HYBRID</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <p class="text-gray-600 mb-6 leading-relaxed">Combine the best of both worlds with
+                                    flexible arrangements that allow you to experience Malta while maintaining remote
+                                    connections.</p>
+                                <a href="#"
+                                    class="text-primary font-bold hover:text-accent transition-colors flex items-center group/link">Explore
+                                    Hybrid <i
+                                        class="fas fa-arrow-right ml-2 group-hover/link:translate-x-1 transition-transform"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Block 3: Our Accomplishments -->
+            <section class="py-24 relative bg-primary">
+                <div class="absolute inset-0 bg-stats-pattern opacity-20 mix-blend-overlay"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-primary/90 to-primary/70"></div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center mb-16">
+                        <span class="text-accent font-bold tracking-widest uppercase text-sm mb-2 block">Our Track
+                            Record</span>
+                        <h2 class="text-3xl md:text-5xl font-heading font-bold text-white">By the Numbers</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
+                        <!-- Stat 1 -->
+                        <div
+                            class="text-center p-8 glass-dark rounded-xl border border-white/10 hover:border-accent/50 transition-colors">
+                            <div
+                                class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-accent/10 mb-6">
+                                <i class="fas fa-history text-4xl text-accent"></i>
+                            </div>
+                            <div class="text-5xl lg:text-6xl font-heading font-extrabold text-white mb-2">20<span
+                                    class="text-accent">+</span></div>
+                            <p class="text-xl text-gray-300 font-medium">Years of Experience</p>
+                        </div>
+
+                        <!-- Stat 2 -->
+                        <div
+                            class="text-center p-8 glass-dark rounded-xl border border-white/10 hover:border-accent/50 transition-colors mt-0 md:mt-8">
+                            <div
+                                class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-accent/10 mb-6">
+                                <i class="fas fa-user-graduate text-4xl text-accent"></i>
+                            </div>
+                            <div class="text-5xl lg:text-6xl font-heading font-extrabold text-white mb-2">45k<span
+                                    class="text-accent">+</span></div>
+                            <p class="text-xl text-gray-300 font-medium">Placements</p>
+                        </div>
+
+                        <!-- Stat 3 -->
+                        <div
+                            class="text-center p-8 glass-dark rounded-xl border border-white/10 hover:border-accent/50 transition-colors mt-0 md:mt-16">
+                            <div
+                                class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-accent/10 mb-6">
+                                <i class="far fa-building text-4xl text-accent"></i>
+                            </div>
+                            <div class="text-5xl lg:text-6xl font-heading font-extrabold text-white mb-2">4,000</div>
+                            <p class="text-xl text-gray-300 font-medium">Host Organisations</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Block 4: Choose Your Path -->
+            <section class="py-24 bg-white relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                        <div class="max-w-2xl">
+                            <h2 class="text-4xl md:text-5xl font-heading font-bold text-primary mb-6">Choose Your Path
+                            </h2>
+                            <div class="w-24 h-1 bg-accent mb-6"></div>
+                            <p class="text-lg text-gray-600">Selecting the right career trajectory is the first step
+                                toward success. Explore our diverse array of professional sectors to find the
+                                apprenticeship or internship that aligns perfectly with your ambitions and skills.</p>
+                        </div>
+                        <a href="#" onclick="navigateTo('business-internship'); return false;"
+                            class="btn-primary px-6 py-3 rounded font-bold whitespace-nowrap hidden md:inline-flex">View
+                            All Programs</a>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Path 1 -->
+                        <div
+                            class="group relative rounded-xl overflow-hidden aspect-[4/5] shadow-lg cursor-pointer max-h-96">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+                                alt="Business"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent">
+                            </div>
+
+                            <div class="absolute inset-0 p-6 flex flex-col justify-end">
+                                <h3
+                                    class="text-2xl font-heading font-bold text-white mb-3 group-hover:text-accent transition-colors">
+                                    Business Entrepreneurship & Intrapreneurship</h3>
+                                <div
+                                    class="h-0 overflow-hidden group-hover:h-auto group-hover:mt-4 transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
+                                    <p class="text-gray-300 text-sm mb-4">Learn to innovate from within and build
+                                        scalable new ventures. Ideal for aspiring founders and corporate innovators
+                                        looking to make an impact.</p>
+                                    <span class="text-accent font-bold text-sm flex items-center">Learn More <i
+                                            class="fas fa-arrow-right ml-2 text-xs"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Path 2 -->
+                        <div
+                            class="group relative rounded-xl overflow-hidden aspect-[4/5] shadow-lg cursor-pointer max-h-96 w-full lg:mt-8">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop"
+                                alt="Manufacturing"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent">
+                            </div>
+
+                            <div class="absolute inset-0 p-6 flex flex-col justify-end">
+                                <h3
+                                    class="text-2xl font-heading font-bold text-white mb-3 group-hover:text-accent transition-colors">
+                                    Manufacturing & Technology</h3>
+                                <div
+                                    class="h-0 overflow-hidden group-hover:h-auto group-hover:mt-4 transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
+                                    <p class="text-gray-300 text-sm mb-4">Engage with advanced systems and operational
+                                        technologies. Perfect for those pursuing engineering or technical management
+                                        careers in global industries.</p>
+                                    <span class="text-accent font-bold text-sm flex items-center">Learn More <i
+                                            class="fas fa-arrow-right ml-2 text-xs"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Path 3 -->
+                        <div
+                            class="group relative rounded-xl overflow-hidden aspect-[4/5] shadow-lg cursor-pointer max-h-96">
+                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop"
+                                alt="Research"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent">
+                            </div>
+
+                            <div class="absolute inset-0 p-6 flex flex-col justify-end">
+                                <h3
+                                    class="text-2xl font-heading font-bold text-white mb-3 group-hover:text-accent transition-colors">
+                                    Research & Innovation</h3>
+                                <div
+                                    class="h-0 overflow-hidden group-hover:h-auto group-hover:mt-4 transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
+                                    <p class="text-gray-300 text-sm mb-4">Dive deep into exploratory methodologies and
+                                        critical thinking. Designed for logical problem-solvers aiming to develop
+                                        ground-breaking solutions.</p>
+                                    <span class="text-accent font-bold text-sm flex items-center">Learn More <i
+                                            class="fas fa-arrow-right ml-2 text-xs"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Path 4 -->
+                        <div
+                            class="group relative rounded-xl overflow-hidden aspect-[4/5] shadow-lg cursor-pointer max-h-96 w-full lg:mt-8">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
+                                alt="Digital"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-transparent">
+                            </div>
+
+                            <div class="absolute inset-0 p-6 flex flex-col justify-end">
+                                <h3
+                                    class="text-2xl font-heading font-bold text-white mb-3 group-hover:text-accent transition-colors">
+                                    Digital Transformation</h3>
+                                <div
+                                    class="h-0 overflow-hidden group-hover:h-auto group-hover:mt-4 transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
+                                    <p class="text-gray-300 text-sm mb-4">Master the shift toward digital workflows and
+                                        data-driven strategy. Best for tech-savvy individuals aiming to modernize
+                                        traditional business models.</p>
+                                    <span class="text-accent font-bold text-sm flex items-center">Learn More <i
+                                            class="fas fa-arrow-right ml-2 text-xs"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Block 5: How to Apply -->
+            <section class="py-24 bg-light">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <span class="text-accent font-bold tracking-widest uppercase text-sm mb-2 block">Simple
+                            Process</span>
+                        <h2 class="text-4xl md:text-5xl font-heading font-bold text-primary mb-6">How to Apply</h2>
+                        <div class="w-24 h-1 bg-accent mx-auto mb-6"></div>
+                        <p class="text-lg text-gray-600">Start your journey with us in three simple steps. We've
+                            streamlined our application process to get you started on your professional path quickly and
+                            efficiently.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                        <!-- Connector Line (Desktop only) -->
+                        <div class="hidden md:block absolute top-[25%] left-[16%] right-[16%] h-0.5 bg-gray-200 z-0">
+                        </div>
+
+                        <!-- Step 1 -->
+                        <div class="relative z-10 flex flex-col items-center text-center">
+                            <div
+                                class="w-20 h-20 rounded-full bg-white shadow-xl flex items-center justify-center border-4 border-light mb-6 transition-transform hover:scale-110 duration-300">
+                                <i class="fas fa-map-signs text-3xl text-primary"></i>
+                            </div>
+                            <span class="text-accent font-bold text-lg mb-2">Step 1</span>
+                            <h3 class="text-2xl font-heading font-bold text-primary mb-4">Select Your Path</h3>
+                            <p class="text-gray-600">Select a path and internship type that best suits your abilities,
+                                career goals, and preferred working style (Physical, Remote, or Hybrid).</p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="relative z-10 flex flex-col items-center text-center mt-8 md:mt-0">
+                            <div
+                                class="w-20 h-20 rounded-full bg-primary text-white shadow-xl flex items-center justify-center border-4 border-light mb-6 transition-transform hover:scale-110 duration-300">
+                                <i class="fas fa-shopping-cart text-3xl text-accent"></i>
+                            </div>
+                            <span class="text-accent font-bold text-lg mb-2">Step 2</span>
+                            <h3 class="text-2xl font-heading font-bold text-primary mb-4">Buy Your Package</h3>
+                            <p class="text-gray-600">Choose the package best suited for your needs from our multiple
+                                options, including comprehensive bundles and limited-time special offers.</p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="relative z-10 flex flex-col items-center text-center mt-8 md:mt-0">
+                            <div
+                                class="w-20 h-20 rounded-full bg-white shadow-xl flex items-center justify-center border-4 border-light mb-6 transition-transform hover:scale-110 duration-300">
+                                <i class="fas fa-rocket text-3xl text-primary"></i>
+                            </div>
+                            <span class="text-accent font-bold text-lg mb-2">Step 3</span>
+                            <h3 class="text-2xl font-heading font-bold text-primary mb-4">Onboarding</h3>
+                            <p class="text-gray-600">Complete your registration, prepare all necessary documentation,
+                                and get ready to embark on your transformative internship journey.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Block 6: Testimonials -->
+            <section class="py-24 bg-primary relative overflow-hidden">
+                <div
+                    class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2084&auto=format&fit=crop')] opacity-10 bg-cover bg-center">
+                </div>
+                <div class="absolute inset-0 bg-primary/95"></div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center max-w-2xl mx-auto mb-16">
+                        <span class="text-accent font-bold tracking-widest uppercase text-sm mb-2 block">Success
+                            Stories</span>
+                        <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-6">Hear From Our Interns
+                        </h2>
+                        <div class="w-24 h-1 bg-accent mx-auto mb-6"></div>
+                        <p class="text-lg text-gray-300">Discover how Paragon placements have transformed careers and
+                            provided unparalleled professional experiences for students and recent graduates across the
+                            globe.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Review 1 -->
+                        <div
+                            class="glass-panel p-8 rounded-xl relative hover:-translate-y-2 transition-transform duration-300">
+                            <div class="absolute top-6 right-6 text-accent/30 text-5xl font-serif">"</div>
+                            <div class="flex items-center gap-1 text-accent mb-6">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="text-gray-700 mb-8 italic relative z-10">"My internship in Malta through Paragon
+                                was life-changing. I gained practical skills in digital marketing that no classroom
+                                could teach. The support team was fantastic from day one, helping me integrate into the
+                                company culture seamlessly."</p>
+                            <div class="flex items-center gap-4">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop"
+                                    alt="Sarah Jenkins" class="w-12 h-12 rounded-full object-cover">
+                                <div>
+                                    <h4 class="font-heading font-bold text-primary">Sarah Jenkins</h4>
+                                    <span class="text-sm text-gray-500">Digital Marketing Intern</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 2 -->
+                        <div
+                            class="glass-panel p-8 rounded-xl relative hover:-translate-y-2 transition-transform duration-300">
+                            <div class="absolute top-6 right-6 text-accent/30 text-5xl font-serif">"</div>
+                            <div class="flex items-center gap-1 text-accent mb-6">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="text-gray-700 mb-8 italic relative z-10">"Opting for the remote hybrid model
+                                allowed me to work with a prestigious European tech firm while finishing my last
+                                semester. The mentorship I received was incredible, directly leading to a full-time job
+                                offer post-graduation."</p>
+                            <div class="flex items-center gap-4">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop"
+                                    alt="David Chen" class="w-12 h-12 rounded-full object-cover">
+                                <div>
+                                    <h4 class="font-heading font-bold text-primary">David Chen</h4>
+                                    <span class="text-sm text-gray-500">Software Developer Intern</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 3 -->
+                        <div
+                            class="glass-panel p-8 rounded-xl relative hover:-translate-y-2 transition-transform duration-300">
+                            <div class="absolute top-6 right-6 text-accent/30 text-5xl font-serif">"</div>
+                            <div class="flex items-center gap-1 text-accent mb-6">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                            <p class="text-gray-700 mb-8 italic relative z-10">"The business entrepreneurship pathway
+                                exposed me to real startup challenges. I wasn't just grabbing coffee; I was heavily
+                                involved in market research and pitching strategies. It was exactly the hands-on
+                                experience I needed."</p>
+                            <div class="flex items-center gap-4">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop"
+                                    alt="Elena Rodriguez" class="w-12 h-12 rounded-full object-cover">
+                                <div>
+                                    <h4 class="font-heading font-bold text-primary">Elena Rodriguez</h4>
+                                    <span class="text-sm text-gray-500">Business Strategy Intern</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Block 7 & 8: About Us & Legacy -->
+            <section id="about" class="py-24 bg-white relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                        <!-- Text Content -->
+                        <div>
+                            <span class="text-accent font-bold tracking-widest uppercase text-sm mb-2 block">Our
+                                Story</span>
+                            <h2 class="text-4xl md:text-5xl font-heading font-bold text-primary mb-6">About Us</h2>
+                            <div class="w-24 h-1 bg-accent mb-8"></div>
+
+                            <p class="text-gray-600 text-lg leading-relaxed mb-6">Paragon Europe is a leading host
+                                agency managing successful Internship programmes through various EU mobility projects
+                                such as Erasmus Plus, Youth Guarantee, Staff Mobility and National and Regional
+                                Operation Projects since 2006, acting primarily as a receiving intermediary organization
+                                in the framework of the Lifelong Learning Program.</p>
+
+                            <p class="text-gray-600 text-lg leading-relaxed mb-8">Our organization continuously strives
+                                to find the best work placements for students to obtain the most appropriate hands-on
+                                experience during their internship in Malta.</p>
+
+                            <div class="bg-light border-l-4 border-accent p-6 rounded-r-lg">
+                                <p class="text-primary font-bold italic">Driven by a vision to empower individuals
+                                    through global opportunities, we bridge the gap between academic learning and
+                                    professional demands.</p>
+                            </div>
+
+                            <!-- Legacy Items (Block 8) -->
+                            <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="bg-primary/10 text-primary w-10 h-10 rounded-lg flex items-center justify-center shrink-0">
+                                        <i class="fas fa-award"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-heading font-bold text-primary mb-1">25-year legacy of
+                                            excellence</h4>
+                                        <p class="text-sm text-gray-500">Decades of proven educational success</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="bg-primary/10 text-primary w-10 h-10 rounded-lg flex items-center justify-center shrink-0">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-heading font-bold text-primary mb-1">3,000+ staff trained</h4>
+                                        <p class="text-sm text-gray-500">Academic and administrative professionals</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="bg-primary/10 text-primary w-10 h-10 rounded-lg flex items-center justify-center shrink-0">
+                                        <i class="fas fa-layer-group"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-heading font-bold text-primary mb-1">500+ tailored programmes
+                                        </h4>
+                                        <p class="text-sm text-gray-500">Customized to individual requirements</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div
+                                        class="bg-primary/10 text-primary w-10 h-10 rounded-lg flex items-center justify-center shrink-0">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-heading font-bold text-primary mb-1">Proven track record</h4>
+                                        <p class="text-sm text-gray-500">In higher education development</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Image Grid -->
+                        <div class="grid grid-cols-2 gap-4 relative">
+                            <div
+                                class="absolute inset-0 bg-accent rounded-2xl transform translate-x-4 translate-y-4 -z-10 opacity-20">
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop"
+                                alt="Students collaborating"
+                                class="rounded-2xl shadow-lg w-full h-64 object-cover transform translate-y-8">
+                            <img src="https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?q=80&w=2070&auto=format&fit=crop"
+                                alt="Professional meeting" class="rounded-2xl shadow-lg w-full h-64 object-cover">
+                            <img src="https://images.unsplash.com/photo-1559854083-0599a0eaad18?q=80&w=1964&auto=format&fit=crop"
+                                alt="Malta architecture"
+                                class="rounded-2xl shadow-lg w-full h-64 object-cover col-span-2 mt-4">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PAGE 2: PG TRAINING LANDING PAGE -->
+        <div id="view-pg-training" class="page-view hidden">
+            <!-- Block 1: Hero Section -->
+            <section class="relative pt-24 pb-32 lg:pt-32 lg:pb-40 overflow-hidden bg-primary" id="training-hero">
+                <div class="absolute inset-0">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop"
+                        alt="Higher Education Training" class="w-full h-full object-cover opacity-30">
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/40"></div>
+                </div>
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+                    <div class="max-w-3xl">
+                        <span
+                            class="inline-flex items-center gap-2 py-1 px-3 rounded-full bg-accent text-primary font-bold text-sm tracking-widest uppercase mb-6">
+                            <i class="fas fa-graduation-cap"></i> Professional Development
+                        </span>
+                        <h1 class="text-white text-5xl md:text-6xl font-heading font-extrabold leading-tight mb-6">PG
+                            Training: A Proven Leader in <span
+                                class="text-accent text-transparent bg-clip-text bg-gradient-to-r from-accent to-yellow-200">Higher
+                                Education</span> Development</h1>
+                        <p
+                            class="text-gray-300 text-xl md:text-2xl mb-10 font-light leading-relaxed border-l-4 border-accent pl-6">
+                            With a 25-year legacy of excellence, PG Training has empowered over 3,000 academic and
+                            administrative staff through innovative practical training programmes.</p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#training-paths"
+                                onclick="document.getElementById('training-paths').scrollIntoView(); return false;"
+                                class="btn-accent px-8 py-4 rounded font-bold text-lg inline-flex items-center group">
+                                Explore Pathways <i
+                                    class="fas fa-arrow-down ml-2 group-hover:translate-y-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Block 2: Choose Your Path - Three Options -->
+            <section id="training-paths" class="py-24 bg-light relative">
+                <!-- Decorative Top Border -->
+                <div class="absolute top-0 left-0 right-0 h-4 bg-gradient-to-r from-primary via-accent to-primary">
+                </div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-20">
+                        <h2 class="text-4xl font-heading font-bold text-primary mb-6">Choose Your Training Path</h2>
+                        <div class="w-24 h-1 bg-accent mx-auto mb-6"></div>
+                        <p class="text-lg text-gray-600">Tailored professional development programmes designed
+                            specifically for higher education staff, researchers, and administrators.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-16">
+                        <!-- Path 1: Academic Excellence -->
+                        <div
+                            class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row group border border-gray-100 hover:border-accent/50 transition-colors duration-300">
+                            <div class="lg:w-1/3 bg-primary p-10 flex flex-col justify-center relative overflow-hidden">
+                                <div
+                                    class="absolute -right-10 -bottom-10 opacity-10 text-9xl text-white transform group-hover:scale-110 transition-transform duration-500">
+                                    <i class="fas fa-book-reader"></i>
+                                </div>
+                                <div
+                                    class="w-16 h-16 rounded-full bg-accent text-primary flex items-center justify-center text-2xl mb-6 relative z-10">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
+                                <h3 class="text-3xl font-heading font-bold text-white mb-4 relative z-10">Academic
+                                    Excellence</h3>
+                                <p class="text-gray-300 text-sm italic relative z-10">Master the Art of Effective
+                                    Teaching and Research.</p>
+                                <div class="mt-8 relative z-10 hidden lg:block">
+                                    <h4 class="text-accent font-bold text-sm uppercase tracking-wider mb-2">Key
+                                        Competencies:</h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="text-xs bg-white/10 text-white px-3 py-1 rounded-full">Teaching</span>
+                                        <span
+                                            class="text-xs bg-white/10 text-white px-3 py-1 rounded-full">Writing</span>
+                                        <span class="text-xs bg-white/10 text-white px-3 py-1 rounded-full">Digital
+                                            Literacy</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:w-2/3 p-10 flex flex-col">
+                                <p class="text-gray-600 mb-8 text-lg border-b border-gray-100 pb-8">Enhance your
+                                    academic career with PG Training's comprehensive Academic Path. Develop essential
+                                    skills to excel in teaching, research, and digital scholarship.</p>
+
+                                <h4 class="font-heading font-bold text-primary text-xl mb-6 flex items-center"><i
+                                        class="far fa-calendar-alt text-accent mr-3"></i> Upcoming Courses</h4>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                                    <div
+                                        class="flex items-start gap-3 group/course p-3 -mx-3 rounded-lg hover:bg-light transition-colors cursor-pointer">
+                                        <i class="fas fa-check-circle text-accent mt-1"></i>
+                                        <div>
+                                            <h5
+                                                class="font-bold text-primary text-sm group-hover/course:text-accent transition-colors">
+                                                Academic Writing Skills for Advanced Researchers</h5>
+                                            <p class="text-xs text-gray-500 mt-1">21st-25th Oct '24 • 25th-29th Nov '24
+                                                • 27th-31st Jan '25</p>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="flex items-start gap-3 group/course p-3 -mx-3 rounded-lg hover:bg-light transition-colors cursor-pointer">
+                                        <i class="fas fa-check-circle text-accent mt-1"></i>
+                                        <div>
+                                            <h5
+                                                class="font-bold text-primary text-sm group-hover/course:text-accent transition-colors">
+                                                Creating a Positive Learning Environment</h5>
+                                            <p class="text-xs text-gray-500 mt-1">20th-24th Jan '25 • 17th-21st March
+                                                '25</p>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="flex items-start gap-3 group/course p-3 -mx-3 rounded-lg hover:bg-light transition-colors cursor-pointer">
+                                        <i class="fas fa-check-circle text-accent mt-1"></i>
+                                        <div>
+                                            <h5
+                                                class="font-bold text-primary text-sm group-hover/course:text-accent transition-colors">
+                                                Content & Language Integrated Learning</h5>
+                                            <p class="text-xs text-gray-500 mt-1">16th-20th Sept '24 • 5th-9th May '25
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="flex items-start gap-3 group/course p-3 -mx-3 rounded-lg hover:bg-light transition-colors cursor-pointer">
+                                        <i class="fas fa-check-circle text-accent mt-1"></i>
+                                        <div>
+                                            <h5
+                                                class="font-bold text-primary text-sm group-hover/course:text-accent transition-colors">
+                                                EU Project Application Writing</h5>
+                                            <p class="text-xs text-gray-500 mt-1">23rd-27th Sept '24 • 7th-11th April
+                                                '25</p>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="flex items-start gap-3 group/course p-3 -mx-3 rounded-lg hover:bg-light transition-colors cursor-pointer">
+                                        <i class="fas fa-check-circle text-accent mt-1"></i>
+                                        <div>
+                                            <h5
+                                                class="font-bold text-primary text-sm group-hover/course:text-accent transition-colors">
+                                                Digital Resources in Teaching</h5>
+                                            <p class="text-xs text-gray-500 mt-1">Every 2nd Monday of the month</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-auto pt-6 text-right">
+                                    <a href="#"
+                                        class="btn-primary px-6 py-2 rounded text-sm font-bold inline-block">Enroll
+                                        Now</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Path 2: Administrative Excellence -->
+                        <div
+                            class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row-reverse group border border-gray-100 hover:border-accent/50 transition-colors duration-300">
+                            <div
+                                class="lg:w-1/3 bg-gray-900 p-10 flex flex-col justify-center relative overflow-hidden">
+                                <div
+                                    class="absolute -left-10 -bottom-10 opacity-10 text-9xl text-white transform group-hover:scale-110 transition-transform duration-500">
+                                    <i class="fas fa-sitemap"></i>
+                                </div>
+                                <div
+                                    class="w-16 h-16 rounded-full bg-accent text-primary flex items-center justify-center text-2xl mb-6 relative z-10">
+                                    <i class="fas fa-users-cog"></i>
+                                </div>
+                                <h3 class="text-3xl font-heading font-bold text-white mb-4 relative z-10">Administrative
+                                    Excellence</h3>
+                                <p class="text-gray-300 text-sm italic relative z-10">Navigate the Complexities of
+                                    Higher Education Administration.</p>
+                                <div class="mt-8 relative z-10 hidden lg:block">
+                                    <h4 class="text-accent font-bold text-sm uppercase tracking-wider mb-2">Key Areas:
+                                    </h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="text-xs bg-white/10 text-white px-3 py-1 rounded-full">Student
+                                            Success</span>
+                                        <span
+                                            class="text-xs bg-white/10 text-white px-3 py-1 rounded-full">Cybersecurity</span>
+                                        <span class="text-xs bg-white/10 text-white px-3 py-1 rounded-full">Cultural
+                                            Integration</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:w-2/3 p-10 flex flex-col">
+                                <p class="text-gray-600 mb-8 text-lg border-b border-gray-100 pb-8">Equip yourself with
+                                    skills to effectively manage student populations, safeguard institutional data, and
+                                    drive internationalization initiatives.</p>
+
+                                <h4 class="font-heading font-bold text-primary text-xl mb-6 flex items-center"><i
+                                        class="far fa-calendar-alt text-accent mr-3"></i> Upcoming Courses</h4>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                                    <div
+                                        class="flex items-start gap-3 group/course p-3 -mx-3 rounded-lg hover:bg-light transition-colors cursor-pointer">
+                                        <i class="fas fa-check-circle text-accent mt-1"></i>
+                                        <div>
+                                            <h5
+                                                class="font-bold text-gray-900 text-sm group-hover/course:text-accent transition-colors">
+                                                Branding: Promoting the University</h5>
+                                            <p class="text-xs text-gray-500 mt-1">25th-29th Nov '24 • 14th-18th July '25
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="flex items-start gap-3 group/course p-3 -mx-3 rounded-lg hover:bg-light transition-colors cursor-pointer">
+                                        <i class="fas fa-check-circle text-accent mt-1"></i>
+                                        <div>
+                                            <h5
+                                                class="font-bold text-gray-900 text-sm group-hover/course:text-accent transition-colors">
+                                                Cultural Integration in Diverse Env.</h5>
+                                            <p class="text-xs text-gray-500 mt-1">11th-15th Nov '24 • 27th-31st Oct '24
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="flex items-start gap-3 group/course p-3 -mx-3 rounded-lg hover:bg-light transition-colors cursor-pointer">
+                                        <i class="fas fa-check-circle text-accent mt-1"></i>
+                                        <div>
+                                            <h5
+                                                class="font-bold text-gray-900 text-sm group-hover/course:text-accent transition-colors">
+                                                Sustainability in Ed. Institutions</h5>
+                                            <p class="text-xs text-gray-500 mt-1">14th-19th April '25 • 5th-9th May '25
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="flex items-start gap-3 group/course p-3 -mx-3 rounded-lg hover:bg-light transition-colors cursor-pointer">
+                                        <i class="fas fa-check-circle text-accent mt-1"></i>
+                                        <div>
+                                            <h5
+                                                class="font-bold text-gray-900 text-sm group-hover/course:text-accent transition-colors">
+                                                Team Building</h5>
+                                            <p class="text-xs text-gray-500 mt-1">18th-22nd Nov '24 • 20th-24th Jan '25
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="flex items-start gap-3 group/course p-3 -mx-3 rounded-lg hover:bg-light transition-colors cursor-pointer">
+                                        <i class="fas fa-check-circle text-accent mt-1"></i>
+                                        <div>
+                                            <h5
+                                                class="font-bold text-gray-900 text-sm group-hover/course:text-accent transition-colors">
+                                                English & Comm. for Admin</h5>
+                                            <p class="text-xs text-gray-500 mt-1">Every Monday</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-auto pt-6 text-left">
+                                    <a href="#"
+                                        class="bg-gray-900 text-white hover:bg-accent hover:text-primary transition-colors px-6 py-2 rounded text-sm font-bold inline-block">Enroll
+                                        Now</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Path 3: Leadership & Innovation -->
+                        <div
+                            class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row group border border-gray-100 hover:border-accent/50 transition-colors duration-300">
+                            <div class="lg:w-1/3 bg-primary p-10 flex flex-col justify-center relative overflow-hidden">
+                                <div
+                                    class="absolute -right-10 -bottom-10 opacity-10 text-9xl text-white transform group-hover:scale-110 transition-transform duration-500">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div
+                                    class="w-16 h-16 rounded-full bg-accent text-primary flex items-center justify-center text-2xl mb-6 relative z-10">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <h3 class="text-3xl font-heading font-bold text-white mb-4 relative z-10">Leadership &
+                                    Innovation</h3>
+                                <p class="text-gray-300 text-sm italic relative z-10">Lead with Vision in Higher
+                                    Education.</p>
+                            </div>
+                            <div class="lg:w-2/3 p-10 flex flex-col justify-center">
+                                <p class="text-gray-600 mb-8 text-xl leading-relaxed">Develop advanced skills for
+                                    strategic leadership, innovation management, and institutional transformation to
+                                    shape the future of educational organizations.</p>
+                                <div
+                                    class="bg-light p-6 rounded-lg border-l-4 border-accent flex items-start gap-4 mb-6">
+                                    <i class="fas fa-info-circle text-primary text-xl mt-1"></i>
+                                    <p class="text-gray-700 italic">This premium track is customized based on
+                                        institutional needs and typically delivered via customized cohorts for senior
+                                        leadership.</p>
+                                </div>
+                                <div>
+                                    <a href="#"
+                                        class="btn-primary px-6 py-3 rounded text-sm font-bold inline-block">Request
+                                        Custom Proposal</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Block 3: Delivery Methods -->
+            <section class="py-24 bg-white border-t border-gray-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Flexible Delivery
+                            Methods</h2>
+                        <p class="text-gray-600 max-w-2xl mx-auto">Choose the format that best fits your schedule and
+                            learning preferences.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                        <div
+                            class="p-8 rounded-xl border border-gray-200 hover:border-accent hover:shadow-lg transition-all duration-300 group">
+                            <div
+                                class="w-20 h-20 mx-auto bg-light rounded-full flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                                <i
+                                    class="fas fa-video text-3xl text-primary group-hover:text-accent transition-colors"></i>
+                            </div>
+                            <h3 class="text-xl font-heading font-bold text-primary mb-3">Online Instructor-Led</h3>
+                            <p class="text-gray-600 text-sm">Interactive virtual classrooms with live experts, combining
+                                the flexibility of remote learning with real-time engagement and networking.</p>
+                        </div>
+
+                        <div
+                            class="p-8 rounded-xl border border-gray-200 hover:border-accent hover:shadow-lg transition-all duration-300 group">
+                            <div
+                                class="w-20 h-20 mx-auto bg-light rounded-full flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                                <i
+                                    class="fas fa-laptop-code text-3xl text-primary group-hover:text-accent transition-colors"></i>
+                            </div>
+                            <h3 class="text-xl font-heading font-bold text-primary mb-3">Online Self-Paced</h3>
+                            <p class="text-gray-600 text-sm">Learn entirely on your own schedule with lifetime access to
+                                comprehensive course materials, video lectures, and assignments.</p>
+                        </div>
+
+                        <div
+                            class="p-8 rounded-xl border border-gray-200 hover:border-accent hover:shadow-lg transition-all duration-300 group">
+                            <div
+                                class="w-20 h-20 mx-auto bg-light rounded-full flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                                <i
+                                    class="fas fa-chalkboard-teacher text-3xl text-primary group-hover:text-accent transition-colors"></i>
+                            </div>
+                            <h3 class="text-xl font-heading font-bold text-primary mb-3">Onsite</h3>
+                            <p class="text-gray-600 text-sm">Immersive face-to-face training experiences at our
+                                state-of-the-art facilities in Malta, complete with cultural excursions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Block 4: Who Should Attend -->
+            <section class="py-24 bg-primary relative overflow-hidden">
+                <div class="absolute inset-0 bg-stats-pattern opacity-10 mix-blend-overlay"></div>
+                <div class="absolute inset-0 bg-gradient-to-tr from-primary to-primary/80"></div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-6">Who Should Attend</h2>
+                        <div class="w-24 h-1 bg-accent mx-auto"></div>
+                    </div>
+
+                    <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
+                        <div
+                            class="glass-dark border border-white/10 p-4 rounded-xl text-center hover:bg-white/10 transition-colors">
+                            <i class="fas fa-user-graduate text-accent text-2xl mb-3"></i>
+                            <h4 class="text-white text-sm font-medium">Undergraduate Students</h4>
+                        </div>
+                        <div
+                            class="glass-dark border border-white/10 p-4 rounded-xl text-center hover:bg-white/10 transition-colors">
+                            <i class="fas fa-graduation-cap text-accent text-2xl mb-3"></i>
+                            <h4 class="text-white text-sm font-medium">Graduate<br>Students</h4>
+                        </div>
+                        <div
+                            class="glass-dark border border-white/10 p-4 rounded-xl text-center hover:bg-white/10 transition-colors">
+                            <i class="fas fa-award text-accent text-2xl mb-3"></i>
+                            <h4 class="text-white text-sm font-medium">Ph.D.<br>Candidates</h4>
+                        </div>
+                        <div
+                            class="glass-dark border border-white/10 p-4 rounded-xl text-center hover:bg-white/10 transition-colors">
+                            <i class="fas fa-book-open text-accent text-2xl mb-3"></i>
+                            <h4 class="text-white text-sm font-medium">Early-Career Academics</h4>
+                        </div>
+                        <div
+                            class="glass-dark border border-white/10 p-4 rounded-xl text-center hover:bg-white/10 transition-colors">
+                            <i class="fas fa-chalkboard text-accent text-2xl mb-3"></i>
+                            <h4 class="text-white text-sm font-medium">Educators & Tutors</h4>
+                        </div>
+                        <div
+                            class="glass-dark border border-white/10 p-4 rounded-xl text-center hover:bg-white/10 transition-colors">
+                            <i class="fas fa-microscope text-accent text-2xl mb-3"></i>
+                            <h4 class="text-white text-sm font-medium">Research Professionals</h4>
+                        </div>
+                        <div
+                            class="glass-dark border border-white/10 p-4 rounded-xl text-center hover:bg-white/10 transition-colors">
+                            <i class="fas fa-users text-accent text-2xl mb-3"></i>
+                            <h4 class="text-white text-sm font-medium">Junior Admin Staff</h4>
+                        </div>
+                        <div
+                            class="glass-dark border border-white/10 p-4 rounded-xl text-center hover:bg-white/10 transition-colors">
+                            <i class="fas fa-user-tie text-accent text-2xl mb-3"></i>
+                            <h4 class="text-white text-sm font-medium">Senior Admin Staff</h4>
+                        </div>
+                        <div
+                            class="glass-dark border border-white/10 p-4 rounded-xl text-center hover:bg-white/10 transition-colors">
+                            <i class="fas fa-sitemap text-accent text-2xl mb-3"></i>
+                            <h4 class="text-white text-sm font-medium">Heads of Departments</h4>
+                        </div>
+                        <div
+                            class="glass-dark border border-white/10 p-4 rounded-xl text-center hover:bg-white/10 transition-colors">
+                            <i class="fas fa-university text-accent text-2xl mb-3"></i>
+                            <h4 class="text-white text-sm font-medium">Deans and Directors</h4>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Block 5: Course Highlights -->
+            <section class="py-24 bg-light">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">Featured Course
+                            Highlights</h2>
+                        <div class="w-24 h-1 bg-accent mx-auto"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Course 1 -->
+                        <div
+                            class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                            <div class="h-48 bg-primary relative p-6 flex items-end">
+                                <div class="absolute inset-0 opacity-20">
+                                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2070&auto=format&fit=crop"
+                                        alt="Writing" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="text-2xl font-heading font-bold text-white relative z-10 leading-snug">
+                                    Academic Writing Skills</h3>
+                            </div>
+                            <div class="p-6">
+                                <p class="text-gray-600 mb-6 text-sm leading-relaxed">Develop clarity, precision, and
+                                    persuasiveness required to excel in academic writing. Master research ethics,
+                                    information synthesis, and argumentation skills tailored for top-tier journal
+                                    publications.</p>
+                                <a href="#"
+                                    class="text-accent font-bold text-sm tracking-wide uppercase hover:text-primary transition-colors flex items-center">Download
+                                    Syllabus <i class="fas fa-arrow-down ml-2"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- Course 2 -->
+                        <div
+                            class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border-b-4 border-accent transform md:-translate-y-4">
+                            <div class="h-48 bg-gray-900 relative p-6 flex items-end">
+                                <div class="absolute inset-0 opacity-20">
+                                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop"
+                                        alt="Classroom" class="w-full h-full object-cover">
+                                </div>
+                                <div
+                                    class="absolute top-4 right-4 bg-accent text-primary text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">
+                                    Most Popular</div>
+                                <h3 class="text-2xl font-heading font-bold text-white relative z-10 leading-snug">
+                                    Creating Positive Learning Environment</h3>
+                            </div>
+                            <div class="p-6">
+                                <p class="text-gray-600 mb-6 text-sm leading-relaxed">Learn practical strategies for
+                                    building positive relationships with students, managing classroom behavior
+                                    proactively, and creating a conducive, psychologically safe learning atmosphere that
+                                    promotes high engagement.</p>
+                                <a href="#"
+                                    class="text-accent font-bold text-sm tracking-wide uppercase hover:text-primary transition-colors flex items-center">Download
+                                    Syllabus <i class="fas fa-arrow-down ml-2"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- Course 3 -->
+                        <div
+                            class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                            <div class="h-48 bg-primary relative p-6 flex items-end">
+                                <div class="absolute inset-0 opacity-20">
+                                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop"
+                                        alt="Integration" class="w-full h-full object-cover">
+                                </div>
+                                <h3 class="text-2xl font-heading font-bold text-white relative z-10 leading-snug">
+                                    Cultural Integration</h3>
+                            </div>
+                            <div class="p-6">
+                                <p class="text-gray-600 mb-6 text-sm leading-relaxed">Develop a deep understanding of
+                                    cultural differences, intercultural communication methodologies, and actionable
+                                    strategies for building inclusive, globally-aware campus environments.</p>
+                                <a href="#"
+                                    class="text-accent font-bold text-sm tracking-wide uppercase hover:text-primary transition-colors flex items-center">Download
+                                    Syllabus <i class="fas fa-arrow-down ml-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PAGE 3: BUSINESS INTERNSHIP PRODUCT PAGE -->
+        <div id="view-business-internship" class="page-view hidden">
+            <!-- Block 1: Product Banner -->
+            <section class="relative pt-24 pb-20 lg:pt-32 lg:pb-32 bg-primary">
+                <div class="absolute inset-0">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+                        alt="Business Professional" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/95 to-primary/60"></div>
+                </div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="flex flex-col md:flex-row gap-12 items-center">
+                        <div class="md:w-3/5">
+                            <span
+                                class="inline-block py-1 px-3 rounded text-accent border border-accent/30 bg-accent/10 font-bold text-xs tracking-widest uppercase mb-6">Premier
+                                Program</span>
+                            <h1
+                                class="text-white text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold leading-tight mb-6">
+                                Business Internship Programme</h1>
+                            <p
+                                class="text-gray-200 text-lg md:text-xl font-light leading-relaxed mb-8 border-l-4 border-accent pl-4">
+                                Your Foundation to Succeed - A work-placement in the business sector provides a unique
+                                opportunity to understand business principles before starting your career.</p>
+                            <div class="flex gap-4">
+                                <a href="#offers"
+                                    onclick="document.getElementById('offers').scrollIntoView(); return false;"
+                                    class="btn-accent px-6 py-3 rounded font-bold transition-colors">View Packages</a>
+                                <a href="#details"
+                                    onclick="document.getElementById('details').scrollIntoView(); return false;"
+                                    class="bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded border border-white/20 font-bold transition-colors">Program
+                                    Details</a>
+                            </div>
+                        </div>
+
+                        <!-- Quick Stats Box -->
+                        <div class="md:w-2/5 w-full">
+                            <div class="glass-panel p-8 rounded-xl relative overflow-hidden">
+                                <div
+                                    class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-yellow-300">
+                                </div>
+                                <h3 class="font-heading font-bold text-primary text-xl mb-6">Program Highlights</h3>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start gap-3">
+                                        <i class="fas fa-check-circle text-accent mt-1"></i>
+                                        <div><span class="font-bold text-primary block text-sm">Duration</span><span
+                                                class="text-gray-600 text-sm">Flexible (4 weeks to 6 months)</span>
+                                        </div>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i class="fas fa-check-circle text-accent mt-1"></i>
+                                        <div><span class="font-bold text-primary block text-sm">Location</span><span
+                                                class="text-gray-600 text-sm">Malta, Remote, or Hybrid</span></div>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i class="fas fa-check-circle text-accent mt-1"></i>
+                                        <div><span class="font-bold text-primary block text-sm">Departments</span><span
+                                                class="text-gray-600 text-sm">Marketing, Sales, Finance, HR &
+                                                more</span></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Block 2: Detailed Product Description & Block 3: Key Skills -->
+            <section id="details" class="py-24 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+                        <!-- Block 2 Description -->
+                        <div>
+                            <span class="text-accent font-bold tracking-widest uppercase text-sm mb-2 block">Make A
+                                Difference</span>
+                            <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">CREATE AN IMPACT
+                            </h2>
+                            <div class="w-16 h-1 bg-accent mb-8"></div>
+
+                            <div class="prose max-w-none text-gray-600">
+                                <p class="mb-4 text-lg leading-relaxed">Graduates with the right skills and
+                                    qualifications have doors of opportunities open for them, and this work placement
+                                    will help you discover what it's like to work in a sector that boasts early
+                                    responsibility and rapid career growth.</p>
+                                <p class="mb-4 leading-relaxed">In today's highly competitive global marketplace,
+                                    theoretical knowledge alone is no longer sufficient. Employers actively seek
+                                    candidates who possess practical business acumen and understand the complexities of
+                                    international operations.</p>
+                                <p class="leading-relaxed">Paragon can place you in exciting international business
+                                    internships in roles spanning across all areas of business, ranging from marketing,
+                                    sales, banking, to human resources. You will be integrated into active teams,
+                                    contributing to real projects and addressing genuine business challenges from day
+                                    one.</p>
+                            </div>
+                        </div>
+
+                        <!-- Block 3 Key Skills -->
+                        <div class="bg-light rounded-2xl p-8 lg:p-12 border border-gray-100">
+                            <h3 class="text-2xl font-heading font-bold text-primary mb-8">Key Skills in the Industry
+                            </h3>
+
+                            <div class="space-y-6">
+                                <div class="flex gap-4 group cursor-default">
+                                    <div
+                                        class="w-12 h-12 rounded bg-white shadow flex items-center justify-center shrink-0 border border-gray-100 group-hover:border-accent group-hover:bg-accent/10 transition-colors">
+                                        <i class="fas fa-network-wired text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-primary mb-1">Professional Networking</h4>
+                                        <p class="text-sm text-gray-600">Build meaningful connections with industry
+                                            leaders and expand your global professional network, opening doors for
+                                            future career opportunities.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4 group cursor-default">
+                                    <div
+                                        class="w-12 h-12 rounded bg-white shadow flex items-center justify-center shrink-0 border border-gray-100 group-hover:border-accent group-hover:bg-accent/10 transition-colors">
+                                        <i class="fas fa-briefcase text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-primary mb-1">Practical Experience</h4>
+                                        <p class="text-sm text-gray-600">Apply theoretical knowledge in real-world
+                                            business environments. Learn to navigate corporate structures and deliver
+                                            tangible results.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4 group cursor-default">
+                                    <div
+                                        class="w-12 h-12 rounded bg-white shadow flex items-center justify-center shrink-0 border border-gray-100 group-hover:border-accent group-hover:bg-accent/10 transition-colors">
+                                        <i class="fas fa-level-up-alt text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-primary mb-1">Career Acceleration</h4>
+                                        <p class="text-sm text-gray-600">Gain a distinct competitive edge with
+                                            international experience on your CV, demonstrating adaptability and global
+                                            business awareness to future employers.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Block 4: ETS Package Section -->
+            <section id="offers" class="py-20 bg-primary relative border-t-4 border-accent">
+                <div class="absolute inset-0 bg-hero-pattern opacity-5 mix-blend-overlay"></div>
+                <div class="absolute inset-0 bg-gradient-to-b from-primary/90 to-primary/70"></div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                    <span
+                        class="text-accent font-bold tracking-widest border border-accent px-4 py-1 rounded inline-block uppercase text-sm mb-6">Staple
+                        Products</span>
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-6">ETS Package Programmes</h2>
+                    <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-10">Our foundational Education & Training
+                        Services (ETS) packages are designed to provide the core essentials needed for a successful
+                        international internship experience.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- ETS 1 -->
+                        <div class="bg-white rounded-lg p-6 text-left group hover:shadow-xl transition-shadow">
+                            <h4 class="font-heading font-bold text-primary text-xl mb-2">Basic Placement</h4>
+                            <p class="text-gray-500 text-sm mb-4 border-b pb-4">Standard placement matching and
+                                documentation.</p>
+                            <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> Company Matching</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> Interview Prep</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> Contract Support</li>
+                            </ul>
+                            <div class="text-2xl font-bold text-primary mb-4">€499</div>
+                            <button class="w-full btn-primary py-2 rounded font-bold text-sm">Select Package</button>
+                        </div>
+
+                        <!-- ETS 2 -->
+                        <div
+                            class="bg-primary border-2 border-accent rounded-lg p-6 text-left transform md:-translate-y-4 shadow-2xl relative">
+                            <div
+                                class="absolute top-0 right-0 bg-accent text-primary text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-sm">
+                                POPULAR</div>
+                            <h4 class="font-heading font-bold text-white text-xl mb-2">Standard Protocol</h4>
+                            <p class="text-gray-300 text-sm mb-4 border-b border-white/20 pb-4">Includes placement plus
+                                arrival support.</p>
+                            <ul class="space-y-2 mb-6 text-sm text-gray-300">
+                                <li><i class="fas fa-check text-accent mr-2"></i> Company Matching</li>
+                                <li><i class="fas fa-check text-accent mr-2"></i> Airport Pickup</li>
+                                <li><i class="fas fa-check text-accent mr-2"></i> Welcome Pack</li>
+                            </ul>
+                            <div class="text-2xl font-bold text-white mb-4">€750</div>
+                            <button class="w-full btn-accent py-2 rounded font-bold text-sm text-primary">Select
+                                Package</button>
+                        </div>
+
+                        <!-- ETS 3 -->
+                        <div class="bg-white rounded-lg p-6 text-left group hover:shadow-xl transition-shadow">
+                            <h4 class="font-heading font-bold text-primary text-xl mb-2">Premium Mobility</h4>
+                            <p class="text-gray-500 text-sm mb-4 border-b pb-4">Full placement and administrative
+                                support.</p>
+                            <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> Priority Matching</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> Visa Assistance</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> 24/7 Support Line</li>
+                            </ul>
+                            <div class="text-2xl font-bold text-primary mb-4">€950</div>
+                            <button class="w-full btn-primary py-2 rounded font-bold text-sm">Select Package</button>
+                        </div>
+
+                        <!-- ETS 4 -->
+                        <div class="bg-white rounded-lg p-6 text-left group hover:shadow-xl transition-shadow">
+                            <h4 class="font-heading font-bold text-primary text-xl mb-2">Elite Corporate</h4>
+                            <p class="text-gray-500 text-sm mb-4 border-b pb-4">All-inclusive VIP professional
+                                placement.</p>
+                            <ul class="space-y-2 mb-6 text-sm text-gray-600">
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> Top-tier Corporate</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> Executive Coaching</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i> Networking Events</li>
+                            </ul>
+                            <div class="text-2xl font-bold text-primary mb-4">€1,499</div>
+                            <button class="w-full btn-primary py-2 rounded font-bold text-sm">Select Package</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Expanded Offers Section Wrapper -->
+            <div class="bg-light pb-24">
+
+                <!-- Block 5: Special Offers Section -->
+                <section class="py-16">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="mb-12">
+                            <div class="flex items-center gap-3 mb-4">
+                                <i class="fas fa-bolt text-accent text-2xl"></i>
+                                <h2 class="text-3xl font-heading font-bold text-primary">Special Offers / Limited Time
+                                </h2>
+                            </div>
+                            <p class="text-gray-600 max-w-3xl">Take advantage of these heavily discounted specialized
+                                programmes available only for a narrow application window. Ideal for quick upskilling
+                                before the next semester.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <!-- Special 1 -->
+                            <div
+                                class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all relative group">
+                                <div
+                                    class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded animate-pulse">
+                                    -30% OFF</div>
+                                <div class="p-6 border-b border-gray-100">
+                                    <h3 class="text-xl font-heading font-bold text-primary mb-2">Summer Accelerator</h3>
+                                    <p class="text-sm text-gray-500">Intensive 4-week startup placement.</p>
+                                </div>
+                                <div class="p-6 bg-gray-50 group-hover:bg-white transition-colors">
+                                    <div class="flex items-end gap-2 mb-6">
+                                        <span class="text-gray-400 line-through text-sm">€650</span>
+                                        <span class="text-3xl font-bold text-primary">€455</span>
+                                    </div>
+                                    <button
+                                        class="w-full bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded font-bold text-sm transition-colors">Claim
+                                        Offer</button>
+                                </div>
+                            </div>
+
+                            <!-- Special 2 -->
+                            <div
+                                class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all relative group">
+                                <div
+                                    class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded animate-pulse">
+                                    -20% OFF</div>
+                                <div class="p-6 border-b border-gray-100">
+                                    <h3 class="text-xl font-heading font-bold text-primary mb-2">Remote Tech Primer</h3>
+                                    <p class="text-sm text-gray-500">6-week hybrid digital skills placement.</p>
+                                </div>
+                                <div class="p-6 bg-gray-50 group-hover:bg-white transition-colors">
+                                    <div class="flex items-end gap-2 mb-6">
+                                        <span class="text-gray-400 line-through text-sm">€450</span>
+                                        <span class="text-3xl font-bold text-primary">€360</span>
+                                    </div>
+                                    <button
+                                        class="w-full bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded font-bold text-sm transition-colors">Claim
+                                        Offer</button>
+                                </div>
+                            </div>
+
+                            <!-- Special 3 -->
+                            <div
+                                class="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all relative group">
+                                <div
+                                    class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded animate-pulse">
+                                    FLASH SALE</div>
+                                <div class="p-6 border-b border-gray-100">
+                                    <h3 class="text-xl font-heading font-bold text-primary mb-2">Last-Minute Matching
+                                    </h3>
+                                    <p class="text-sm text-gray-500">Immediate placement within 14 days.</p>
+                                </div>
+                                <div class="p-6 bg-gray-50 group-hover:bg-white transition-colors">
+                                    <div class="flex items-end gap-2 mb-6">
+                                        <span class="text-gray-400 line-through text-sm">€550</span>
+                                        <span class="text-3xl font-bold text-primary">€299</span>
+                                    </div>
+                                    <button
+                                        class="w-full bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded font-bold text-sm transition-colors">Claim
+                                        Offer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+                        <!-- Block 6: Combo Offers -->
+                        <section class="bg-white p-8 rounded-2xl shadow-md border border-gray-100">
+                            <div class="flex items-center gap-3 mb-4">
+                                <i class="fas fa-layer-group text-accent text-2xl"></i>
+                                <h2 class="text-2xl font-heading font-bold text-primary">Combo Offers</h2>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-8">Maximize value by combining a professional internship
+                                with targeted academic training or language courses.</p>
+
+                            <div class="space-y-4">
+                                <!-- Combo 1 -->
+                                <div
+                                    class="border border-gray-200 rounded-lg p-4 flex justify-between items-center group hover:border-accent hover:bg-accent/5 transition-all">
+                                    <div>
+                                        <h4 class="font-bold text-primary mb-1">Placement + English Course</h4>
+                                        <p class="text-xs text-gray-500">12w Business Placement + 4w Business English
+                                        </p>
+                                    </div>
+                                    <div class="text-right pl-4 border-l border-gray-200">
+                                        <div class="font-bold text-lg text-primary">€1,100</div>
+                                        <a href="#" class="text-xs text-accent font-bold hover:underline">Select</a>
+                                    </div>
+                                </div>
+
+                                <!-- Combo 2 -->
+                                <div
+                                    class="border border-gray-200 rounded-lg p-4 flex justify-between items-center group hover:border-accent hover:bg-accent/5 transition-all">
+                                    <div>
+                                        <h4 class="font-bold text-primary mb-1">Placement + Project Mgmt Cert</h4>
+                                        <p class="text-xs text-gray-500">12w Tech Placement + CAPM Prep Course</p>
+                                    </div>
+                                    <div class="text-right pl-4 border-l border-gray-200">
+                                        <div class="font-bold text-lg text-primary">€1,450</div>
+                                        <a href="#" class="text-xs text-accent font-bold hover:underline">Select</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Block 7: Bundle Offers -->
+                        <section class="bg-white p-8 rounded-2xl shadow-md border border-gray-100">
+                            <div class="flex items-center gap-3 mb-4">
+                                <i class="fas fa-box-open text-accent text-2xl"></i>
+                                <h2 class="text-2xl font-heading font-bold text-primary">Bundle Offers</h2>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-8">Complete "turn-key" experiences covering placement,
+                                accommodation, airport transfers, and local transport passes.</p>
+
+                            <div class="space-y-4">
+                                <!-- Bundle 1 -->
+                                <div
+                                    class="border border-gray-200 rounded-lg p-4 flex justify-between items-center group hover:border-accent hover:bg-accent/5 transition-all">
+                                    <div>
+                                        <h4 class="font-bold text-primary mb-1">Standard Living Bundle</h4>
+                                        <p class="text-xs text-gray-500">Placement + Shared Apartment + Transport</p>
+                                    </div>
+                                    <div class="text-right pl-4 border-l border-gray-200">
+                                        <div class="font-bold text-lg text-primary">€1,850<span
+                                                class="text-xs font-normal">/mo</span></div>
+                                        <a href="#" class="text-xs text-accent font-bold hover:underline">Select</a>
+                                    </div>
+                                </div>
+
+                                <!-- Bundle 2 -->
+                                <div
+                                    class="border border-gray-200 rounded-lg p-4 flex justify-between items-center group hover:border-accent hover:bg-accent/5 transition-all">
+                                    <div>
+                                        <h4 class="font-bold text-primary mb-1">Premium Living Bundle</h4>
+                                        <p class="text-xs text-gray-500">Placement + Private Studio + Gym + Transport
+                                        </p>
+                                    </div>
+                                    <div class="text-right pl-4 border-l border-gray-200">
+                                        <div class="font-bold text-lg text-primary">€2,600<span
+                                                class="text-xs font-normal">/mo</span></div>
+                                        <a href="#" class="text-xs text-accent font-bold hover:underline">Select</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- Block 8: Celebration Offers & Block 9: Incentive Programs -->
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+                        <!-- Celebration Offers -->
+                        <section class="relative rounded-2xl overflow-hidden bg-primary p-8">
+                            <div
+                                class="absolute right-0 top-0 w-32 h-32 bg-accent rounded-full -mr-16 -mt-16 opacity-30">
+                            </div>
+                            <div class="relative z-10">
+                                <h2 class="text-2xl font-heading font-bold text-white mb-4"><i
+                                        class="fas fa-glass-cheers text-accent mr-3"></i>Celebration Specials</h2>
+                                <p class="text-gray-300 text-sm mb-6">Celebrate Paragon's milestone anniversaries with
+                                    these exclusive, heavily subsidized placement opportunities. Very limited
+                                    availability.</p>
+
+                                <div class="bg-white/10 border border-white/20 rounded-lg p-5 backdrop-blur-sm">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h4 class="font-bold text-white">25th Anniversary Fellowship</h4>
+                                        <span class="bg-accent text-primary text-xs font-bold px-2 py-1 rounded">5 SPOTS
+                                            LEFT</span>
+                                    </div>
+                                    <p class="text-xs text-gray-300 mb-4">Fully funded administrative fee for a 6-month
+                                        placement for outstanding academic achievers.</p>
+                                    <button
+                                        class="w-full bg-transparent hover:bg-white text-white hover:text-primary border border-white py-2 rounded font-bold text-sm transition-colors">Apply
+                                        for Fellowship</button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Incentive Programs -->
+                        <section
+                            class="bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-2xl shadow-inner border border-gray-200">
+                            <h2 class="text-2xl font-heading font-bold text-primary mb-4"><i
+                                    class="fas fa-gift text-accent mr-3"></i>Incentive Programmes</h2>
+                            <p class="text-gray-600 text-sm mb-6">We reward ambition and networking. Discover how you
+                                can offset the costs of your professional journey through our referral and ambassador
+                                initiatives.</p>
+
+                            <ul class="space-y-4">
+                                <li class="flex items-start gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center shrink-0">
+                                        <i class="fas fa-user-friends text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-primary text-sm">Refer a Friend Program</h4>
+                                        <p class="text-xs text-gray-500">Receive a €100 grant applicable to your current
+                                            or future placement when a referred friend successfully enrolls.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start gap-4">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-white shadow flex items-center justify-center shrink-0">
+                                        <i class="fas fa-bullhorn text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-primary text-sm">Campus Ambassador</h4>
+                                        <p class="text-xs text-gray-500">Represent Paragon at your university and earn
+                                            stipends or free specialized short courses while building your resume.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Block 9: Shared Footer -->
+    <footer id="footer" class="bg-primary text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-1">
+                    <div class="flex items-center gap-2 mb-6 cursor-pointer" onclick="navigateTo('home')">
+                        <div
+                            class="h-10 w-10 bg-accent text-primary rounded flex items-center justify-center font-heading font-bold text-xl">
+                            PG</div>
+                        <span class="font-heading font-bold text-2xl tracking-tight text-white">Paragon</span>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-6">Empowering global careers through practical experiences and
+                        professional training since 2006.</p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-primary transition-colors duration-300"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="#"
+                            class="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-primary transition-colors duration-300"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#"
+                            class="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-primary transition-colors duration-300"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#"
+                            class="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-primary transition-colors duration-300"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-accent font-heading font-bold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" onclick="navigateTo('home'); return false;"
+                                class="text-gray-300 hover:text-accent transition-colors text-sm">Home</a></li>
+                        <li><a href="#about"
+                                onclick="navigateTo('home'); setTimeout(()=>document.getElementById('about').scrollIntoView(), 100); return false;"
+                                class="text-gray-300 hover:text-accent transition-colors text-sm">About Us</a></li>
+                        <li><a href="#" onclick="navigateTo('pg-training'); return false;"
+                                class="text-gray-300 hover:text-accent transition-colors text-sm">PG Training</a></li>
+                        <li><a href="#" onclick="navigateTo('business-internship'); return false;"
+                                class="text-gray-300 hover:text-accent transition-colors text-sm">Business
+                                Internship</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-accent font-heading font-bold text-lg mb-6">Legal</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-300 hover:text-accent transition-colors text-sm">Terms &
+                                Conditions</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent transition-colors text-sm">Privacy
+                                Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-accent transition-colors text-sm">Cookie
+                                Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-accent font-heading font-bold text-lg mb-6">Contact Us</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-accent mt-1 mr-3"></i>
+                            <span class="text-gray-300 text-sm">123 Education Hub, Innovation District,<br>Valletta,
+                                Malta VLT 1000</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-accent mr-3"></i>
+                            <span class="text-gray-300 text-sm">+356 2000 1234</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-accent mr-3"></i>
+                            <a href="mailto:info@paragongroup.eu"
+                                class="text-gray-300 hover:text-accent transition-colors text-sm">info@paragongroup.eu</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-white/10 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-gray-400">&copy; <span id="year"></span> Paragon Group. All rights reserved.</p>
+
+                <!-- Portfolio Attribution Requirement -->
+                <div class="bg-white/5 rounded px-4 py-2 border border-white/10">
+                    <p class="text-xs text-gray-300 italic">Project for Portfolio: Website developed for PGI (Paragon
+                        Group) - <a href="https://sajjadhussain763.github.io" target="_blank"
+                            class="text-accent hover:underline">sajjadhussain763.github.io</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <a href="#" id="back-to-top"
+        class="fixed bottom-8 right-8 bg-accent text-primary h-12 w-12 rounded-full flex items-center justify-center shadow-lg hover:bg-primary hover:text-white transition-all duration-300 z-40">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Application Script -->
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // SPA Navigation Logic
+        function navigateTo(viewId) {
+            // Hide all views
+            document.querySelectorAll('.page-view').forEach(view => {
+                view.classList.remove('active');
+                setTimeout(() => {
+                    if (!view.classList.contains('active')) view.classList.add('hidden');
+                }, 400); // match transition ms
+            });
+
+            // Show target view
+            const targetView = document.getElementById('view-' + viewId);
+            if (targetView) {
+                targetView.classList.remove('hidden');
+                setTimeout(() => targetView.classList.add('active'), 50);
+            }
+
+            // Update Nav Active State
+            document.querySelectorAll('nav .nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.target === viewId) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMobileMenu(forceState) {
+            const icon = mobileMenuBtn.querySelector('i');
+            const isHidden = mobileMenu.classList.contains('hidden');
+
+            const show = forceState !== undefined ? forceState : isHidden;
+
+            if (show) {
+                mobileMenu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                mobileMenu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', () => toggleMobileMenu());
+
+        // Back to Top Button Visibility
+        const backToTop = document.getElementById('back-to-top');
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+                navbar.classList.add('shadow-md');
+            } else {
+                backToTop.classList.remove('show');
+                navbar.classList.remove('shadow-md');
+            }
+        });
+
+        // Setup Carousel logic (placeholder for Home Page block 1)
+        function initCarousel() {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.carousel-item');
+            if (slides.length === 0) return;
+
+            const nextSlide = () => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            };
+
+            // Auto advance
+            setInterval(nextSlide, 5000);
+        }
+
+        // Init functions when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            initCarousel();
+        });
+    </script>
+</body>
+
+</html>

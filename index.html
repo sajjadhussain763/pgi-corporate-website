@@ -1042,6 +1042,7 @@
                                 </div>
                                 <div class="mt-auto pt-6 text-right">
                                     <a href="#"
+                                        onclick="openOrderModal('pgt-academic', 'Academic Excellence', 'View Details'); return false;"
                                         class="btn-primary px-6 py-2 rounded text-sm font-bold inline-block">Enroll
                                         Now</a>
                                 </div>
@@ -1148,6 +1149,7 @@
                                 </div>
                                 <div class="mt-auto pt-6 text-left">
                                     <a href="#"
+                                        onclick="openOrderModal('pgt-admin', 'Administrative Excellence', 'View Details'); return false;"
                                         class="bg-gray-900 text-white hover:bg-accent hover:text-primary transition-colors px-6 py-2 rounded text-sm font-bold inline-block">Enroll
                                         Now</a>
                                 </div>
@@ -1561,7 +1563,8 @@
                                 <li><i class="fas fa-check text-green-500 mr-2"></i> Contract Support</li>
                             </ul>
                             <div class="text-2xl font-bold text-primary mb-4">€499</div>
-                            <button class="w-full btn-primary py-2 rounded font-bold text-sm">Select Package</button>
+                            <button onclick="openOrderModal('ets-basic', 'Basic Placement', '€499')"
+                                class="w-full btn-primary py-2 rounded font-bold text-sm">Select Package</button>
                         </div>
 
                         <!-- ETS 2 -->
@@ -1579,7 +1582,8 @@
                                 <li><i class="fas fa-check text-accent mr-2"></i> Welcome Pack</li>
                             </ul>
                             <div class="text-2xl font-bold text-white mb-4">€750</div>
-                            <button class="w-full btn-accent py-2 rounded font-bold text-sm text-primary">Select
+                            <button onclick="openOrderModal('ets-standard', 'Standard Protocol', '€750')"
+                                class="w-full btn-accent py-2 rounded font-bold text-sm text-primary">Select
                                 Package</button>
                         </div>
 
@@ -1594,7 +1598,8 @@
                                 <li><i class="fas fa-check text-green-500 mr-2"></i> 24/7 Support Line</li>
                             </ul>
                             <div class="text-2xl font-bold text-primary mb-4">€950</div>
-                            <button class="w-full btn-primary py-2 rounded font-bold text-sm">Select Package</button>
+                            <button onclick="openOrderModal('ets-premium', 'Premium Mobility', '€950')"
+                                class="w-full btn-primary py-2 rounded font-bold text-sm">Select Package</button>
                         </div>
 
                         <!-- ETS 4 -->
@@ -1608,7 +1613,8 @@
                                 <li><i class="fas fa-check text-green-500 mr-2"></i> Networking Events</li>
                             </ul>
                             <div class="text-2xl font-bold text-primary mb-4">€1,499</div>
-                            <button class="w-full btn-primary py-2 rounded font-bold text-sm">Select Package</button>
+                            <button onclick="openOrderModal('ets-elite', 'Elite Corporate', '€1,499')"
+                                class="w-full btn-primary py-2 rounded font-bold text-sm">Select Package</button>
                         </div>
                     </div>
                 </div>
@@ -1648,6 +1654,7 @@
                                         <span class="text-3xl font-bold text-primary">€455</span>
                                     </div>
                                     <button
+                                        onclick="openOrderModal('special-summer', 'Summer Accelerator Offer', '€455')"
                                         class="w-full bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded font-bold text-sm transition-colors">Claim
                                         Offer</button>
                                 </div>
@@ -1669,6 +1676,7 @@
                                         <span class="text-3xl font-bold text-primary">€360</span>
                                     </div>
                                     <button
+                                        onclick="openOrderModal('special-remote', 'Remote Tech Primer Offer', '€360')"
                                         class="w-full bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded font-bold text-sm transition-colors">Claim
                                         Offer</button>
                                 </div>
@@ -1691,6 +1699,7 @@
                                         <span class="text-3xl font-bold text-primary">€299</span>
                                     </div>
                                     <button
+                                        onclick="openOrderModal('special-flash', 'Last-Minute Matching Offer', '€299')"
                                         class="w-full bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded font-bold text-sm transition-colors">Claim
                                         Offer</button>
                                 </div>
@@ -1722,7 +1731,9 @@
                                     </div>
                                     <div class="text-right pl-4 border-l border-gray-200">
                                         <div class="font-bold text-lg text-primary">€1,100</div>
-                                        <a href="#" class="text-xs text-accent font-bold hover:underline">Select</a>
+                                        <a href="#"
+                                            onclick="openOrderModal('combo-english', 'Placement + English Course', '€1,100'); return false;"
+                                            class="text-xs text-accent font-bold hover:underline">Select</a>
                                     </div>
                                 </div>
 
@@ -1735,7 +1746,9 @@
                                     </div>
                                     <div class="text-right pl-4 border-l border-gray-200">
                                         <div class="font-bold text-lg text-primary">€1,450</div>
-                                        <a href="#" class="text-xs text-accent font-bold hover:underline">Select</a>
+                                        <a href="#"
+                                            onclick="openOrderModal('combo-pm', 'Placement + Project Mgmt Cert', '€1,450'); return false;"
+                                            class="text-xs text-accent font-bold hover:underline">Select</a>
                                     </div>
                                 </div>
                             </div>
@@ -1761,7 +1774,9 @@
                                     <div class="text-right pl-4 border-l border-gray-200">
                                         <div class="font-bold text-lg text-primary">€1,850<span
                                                 class="text-xs font-normal">/mo</span></div>
-                                        <a href="#" class="text-xs text-accent font-bold hover:underline">Select</a>
+                                        <a href="#"
+                                            onclick="openOrderModal('bundle-standard', 'Standard Living Bundle', '€1,850/mo'); return false;"
+                                            class="text-xs text-accent font-bold hover:underline">Select</a>
                                     </div>
                                 </div>
 
@@ -1776,7 +1791,9 @@
                                     <div class="text-right pl-4 border-l border-gray-200">
                                         <div class="font-bold text-lg text-primary">€2,600<span
                                                 class="text-xs font-normal">/mo</span></div>
-                                        <a href="#" class="text-xs text-accent font-bold hover:underline">Select</a>
+                                        <a href="#"
+                                            onclick="openOrderModal('bundle-premium', 'Premium Living Bundle', '€2,600/mo'); return false;"
+                                            class="text-xs text-accent font-bold hover:underline">Select</a>
                                     </div>
                                 </div>
                             </div>
@@ -1809,6 +1826,7 @@
                                     <p class="text-xs text-gray-300 mb-4">Fully funded administrative fee for a 6-month
                                         placement for outstanding academic achievers.</p>
                                     <button
+                                        onclick="openOrderModal('fellowship', '25th Anniversary Fellowship', 'Free/Funded')"
                                         class="w-full bg-transparent hover:bg-white text-white hover:text-primary border border-white py-2 rounded font-bold text-sm transition-colors">Apply
                                         for Fellowship</button>
                                 </div>
@@ -1949,6 +1967,71 @@
         </div>
     </footer>
 
+    <!-- Order/Application Modal -->
+    <div id="order-modal"
+        class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-primary/80 backdrop-blur-sm" onclick="closeOrderModal()"></div>
+        <div class="bg-white rounded-xl shadow-2xl relative w-full max-w-lg mx-4 z-10 p-8 transform scale-95 transition-transform duration-300"
+            id="order-modal-content">
+            <button onclick="closeOrderModal()"
+                class="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <div id="modal-header">
+                <span class="text-accent font-bold text-xs tracking-widest uppercase mb-1 block">Application Form</span>
+                <h3 class="text-2xl font-heading font-bold text-primary mb-2" id="modal-package-name">Package Name</h3>
+                <p class="text-gray-500 text-sm mb-6 pb-6 border-b border-gray-100 flex justify-between items-center">
+                    <span>Selected Program</span>
+                    <span class="font-bold text-primary text-lg" id="modal-package-price">€0</span>
+                </p>
+            </div>
+
+            <form id="order-form" onsubmit="submitOrder(event)">
+                <input type="hidden" id="package-id" name="package_id">
+
+                <div class="space-y-4 mb-8">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-2"
+                            for="user-name">Full Name</label>
+                        <input
+                            class="w-full px-4 py-3 rounded border border-gray-200 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all text-sm"
+                            id="user-name" type="text" required placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-2"
+                            for="user-email">Email Address</label>
+                        <input
+                            class="w-full px-4 py-3 rounded border border-gray-200 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all text-sm"
+                            id="user-email" type="email" required placeholder="john@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-2"
+                            for="user-phone">Phone Number</label>
+                        <input
+                            class="w-full px-4 py-3 rounded border border-gray-200 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all text-sm"
+                            id="user-phone" type="tel" required placeholder="+1 234 567 8900">
+                    </div>
+                </div>
+
+                <button type="submit"
+                    class="w-full btn-accent py-3 rounded font-bold text-primary text-lg shadow-lg hover:shadow-xl transition-all">
+                    Confirm Application <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                </button>
+            </form>
+
+            <div id="modal-success" class="hidden text-center py-8">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-check text-2xl text-green-500"></i>
+                </div>
+                <h4 class="text-2xl font-heading font-bold text-primary mb-2">Application Received!</h4>
+                <p class="text-gray-600 mb-6 text-sm leading-relaxed">Thank you for choosing Paragon Group. An
+                    admissions representative will contact you shortly to confirm your enrollment details.</p>
+                <button onclick="closeOrderModal()" class="btn-primary px-8 py-2 rounded text-sm font-bold mt-4">Close
+                    Window</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Back to top button -->
     <a href="#" id="back-to-top"
         class="fixed bottom-8 right-8 bg-accent text-primary h-12 w-12 rounded-full flex items-center justify-center shadow-lg hover:bg-primary hover:text-white transition-all duration-300 z-40">
@@ -2040,6 +2123,50 @@
 
             // Auto advance
             setInterval(nextSlide, 5000);
+        }
+
+        // Modal Logic
+        function openOrderModal(packageId, packageName, price) {
+            const modal = document.getElementById('order-modal');
+            const modalContent = document.getElementById('order-modal-content');
+
+            // Set data
+            document.getElementById('package-id').value = packageId;
+            document.getElementById('modal-package-name').textContent = packageName;
+            document.getElementById('modal-package-price').textContent = price;
+
+            // Reset form
+            document.getElementById('order-form').reset();
+            document.getElementById('order-form').classList.remove('hidden');
+            document.getElementById('modal-header').classList.remove('hidden');
+            document.getElementById('modal-success').classList.add('hidden');
+
+            // Show modal
+            modal.classList.remove('hidden');
+            // Trigger reflow
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+            modalContent.classList.remove('scale-95');
+        }
+
+        function closeOrderModal() {
+            const modal = document.getElementById('order-modal');
+            const modalContent = document.getElementById('order-modal-content');
+
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function submitOrder(event) {
+            event.preventDefault();
+            // Show success View
+            document.getElementById('order-form').classList.add('hidden');
+            document.getElementById('modal-header').classList.add('hidden');
+            document.getElementById('modal-success').classList.remove('hidden');
         }
 
         // Init functions when DOM is ready

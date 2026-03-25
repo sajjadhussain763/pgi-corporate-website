@@ -4,9 +4,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Ensure assets load correctly on GitHub Pages
-  basePath: '/PG-Corporate-Website-',
-  assetPrefix: '/PG-Corporate-Website-/',
+  // Use relative asset paths as requested
+  basePath: '/pgi-corporate-website',
+  assetPrefix: '/pgi-corporate-website/',
+  trailingSlash: true,
 };
 
 export default nextConfig;

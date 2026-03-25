@@ -1,0 +1,133 @@
+.packages {
+  background: var(--navy);
+  position: relative;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.header .section-subtitle { margin: 0 auto; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+.card {
+  position: relative;
+  background: var(--navy-light);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-lg);
+  padding: 40px 28px 32px;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-glow);
+}
+
+.popular {
+  border-color: var(--cta);
+  box-shadow: 0 0 30px rgba(232,85,61,0.12);
+}
+
+.badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--cta);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 20px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tierTag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 6px 14px;
+  border: 1px solid;
+  border-radius: 50px;
+  margin-bottom: 18px;
+  width: fit-content;
+}
+
+.name {
+  font-size: 1.3rem;
+  margin-bottom: 18px;
+}
+
+.pricing {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 18px;
+}
+
+.currency {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.amount {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1;
+}
+
+.duration {
+  font-size: 0.9rem;
+  color: var(--grey-400);
+}
+
+.desc {
+  font-size: 0.9rem;
+  color: var(--grey-400);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+  flex-grow: 1;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--grey-300);
+}
+
+.addBtn {
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+}
